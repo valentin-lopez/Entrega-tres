@@ -52,6 +52,10 @@ class Guitarra {
     }
 };
 
+function imprimirGuitarras(lista) {
+   return lista.map(guitarra => (`${guitarra.marca} ${guitarra.modelo}`));
+}
+
 function main() {
     let opcionElegida = -1; // solo por darle un valor inicial
     while (opcionElegida !== 0) {
@@ -64,42 +68,70 @@ function main() {
           6. Agregar nuevo producto.
           
           Para salir, marque 0`));
+
+          switch (opcionElegida) {
+                    case 0:
+                        break;
+                    case 1:
+                        alert(`Nuestro listado de productos: ${imprimirGuitarras(listaDeProductos)}`);
+                        break;
+                    case 2:
+                        filtrarElectrica(true)
+                        break;
+                    case 3:
+                        filtrarElectrica(false);
+                        break;
+                    case 4:
+                        filtrarZurdo(true);
+                        break;
+                    case 5:
+                        filtrarEstuche(true);
+                        break;
+                    case 6:
+                        agregarProducto();
+                        break;
+                    default:
+                        alert("Opción no válida");
+                        break;
+                        
+                }
        }
 }                  
 
 function filtrarElectrica(electrica) {
     if (electrica) {
         const guitarrasElectricas = listaDeProductos.filter(el => el.electrica);
-        console.log("Nuestro catálogo de guitarras eléctricas:", guitarrasElectricas);
+        console.log("Nuestro catálogo de guitarras eléctricas:", imprimirGuitarras(guitarrasElectricas));
         alert("En la consola está la data");
     }   else {
         const clasicas = listaDeProductos.filter(el => !el.electrica);
-        console.log("Nuestro catálogo de guitarras clásicas:", clasicas);
+        console.log("Nuestro catálogo de guitarras clásicas:", imprimirGuitarras(clasicas));
         alert("En la consola está la data");
     }
-
 }
 
 function filtrarZurdo(zurdo) {
     if (zurdo) {
-        const GuitarrasDeZurdo = listaDeProductos.filter(el => el.zurdo);
-        console.log("Nuestro catálogo de guitarras para zurdos:", GuitarrasDeZurdo);
-        alert("En la consola está la data");
-    }   else
+        const guitarrasDeZurdo = listaDeProductos.filter(el => el.zurdo);
+        console.log("Nuestro catálogo de guitarras para zurdos:", imprimirGuitarras(guitarrasDeZurdo));
+        // alert("En la consola está la data");
+    }   else {
         const derecho = listaDeProductos.filter(el => !el.zurdo);
-        console.log("Nuestro catalogo de guitarras para derecho:", derecho);
+        console.log("Nuestro catalogo de guitarras para derecho:", imprimirGuitarras(derecho));
         alert("En la consola está la data");
+    }
 }
 
 function filtrarEstuche(conEstuche) {
     if (conEstuche) {
         const guitarrasConEstuche = listaDeProductos.filter(el => el.estuche);
-        console.log("Nuestro catálogo de guitarras con estuche incluído:", guitarrasConEstuche);
+        console.log("Nuestro catálogo de guitarras con estuche incluído:", imprimirGuitarras(guitarrasConEstuche));
         alert("En la consola está la data");
     }   else {
         const sinEstuche = listaDeProductos.filter(el => !el.estuche);
-        console.log("Nuestro catálogo de guitarras sin estuche incluído:", sinEstuche);
+        console.log("Nuestro catálogo de guitarras sin estuche incluído:", imprimirGuitarras(sinEstuche));
         alert("En la consola está la data");
+    }
 }
 
 function agregarProducto() {
@@ -110,36 +142,10 @@ function agregarProducto() {
     const electrica = confirm("Es eléctrica?");
     const zurdo = confirm("Es para zurdo?");
 
-    const nuevoProducto = new Producto(id, marca, modelo, estuche, electrica, zurdo);
+    const nuevoProducto = new Guitarra(id, marca, modelo, estuche, electrica, zurdo);
     listaDeProductos.push(nuevoProducto);
 
     alert("Producto agregado con éxito");
 };
 
-
-while (opcionElegida !== 0) {
-    switch (opcionElegida) {
-        case 1:
-            console.log("Nuestro listado de productos:", listaDeProductos);
-            alert("En la consola está la data")
-            break;
-        case 2:
-            filtrarElectrica(true);
-            break;
-        case 3:
-            filtrarElectrica(false);
-            break;
-        case 4:
-            filtrarZurdo(true);
-            break;
-        case 5:
-            filtrarEstuche(true);
-            break;
-        default:
-            alert("Opción no válida");
-            break;
-            
-    }
-}
-
-main();
+main()
