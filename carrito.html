@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+  <title>Carrito</title>
+</head>
+<body>
+  
+  <div class="wrapper">
+    <aside>
+        <header>
+            <h1 class="logo">Guitarras</h1>
+        </header>
+        <nav>
+            <ul>
+                <li>
+                    <a class="logo" href="index.html">Seguir comprando</a>
+                </li>
+            </ul>
+        </nav>
+        <footer>
+            <p class="footer-text">© 2024 Valentin</p>
+        </footer>
+    </aside>    
+    <main>
+      <h2 class="main-title">Carrito</h2>
+      <div class="cart-container">
+        <p id="carrito-vacio" class="carrito-vacio">Tu carrito</p>
+
+        <div id="carrito-productos" class="cart-products">
+          <!-- Los productos se agregan por JavaScript -->
+        </div>
+
+        <div id="carrito-acciones" class="actions-cart">
+          <div class="left-actions-cart">
+            <button id="carrito-vacio" class="empty-cart">Vaciar Carrito</button>
+          </div>
+          <div class="right-actions-cart">
+            <div class="total-cart">
+              <p>Total:</p>
+              <p id="total"></p>
+            </div>
+            <button class="buy-action-cart">Comprar ahora</button>
+          </div>
+        </div>
+      </div>
+    </main>         
+  </div>
+
+  <script src="/js/carrito.js"></script>
+</body>
+</html>

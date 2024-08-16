@@ -3,10 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
     <title>Document</title>
 </head>
 <body>
+
+    <div class="wrapper">
+        <aside>
+            <header>
+                <h1 class="logo">Guitarras</h1>
+            </header>
+            <nav>
+                <ul class="menu">
+                    <li>
+                        <button id="todos" class="btn-menu btn-cat active">Todos los productos</button>
+                    </li>
+                    <li>
+                        <button id="electricas" class="btn-menu btn-cat">Guitarras eléctricas</button>
+                    </li>
+                    <li>
+                        <button id="clasicas" class="btn-menu btn-cat">Guitarras clásicas</button>
+                    </li>
+                    <li>
+                        <button id="bajo" class="btn-menu btn-cat">Bajos eléctricos</button>
+                    </li>
+                    <li>
+                        <a class="btn-cat cart-btn" href="./carrito.html">Carrito <span id="counter">0</span></a></li>
+                </ul>
+            </nav>
+            <footer>
+                <p class="footer-text">© 2024 Valentin</p>
+            </footer>
+        </aside>    
+        <main>
+            <h2 id="main-title" class="main-title">Todos los productos</h2>
+            <div id="products-container" class="products-container">
+            </div>
+        </main>         
+    </div>
     
-    <script src="./segundaEntrega.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
