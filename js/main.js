@@ -3,7 +3,7 @@ const productos = [
         marca: "Marco Bortolozo", 
         modelo: "Especial", 
         precio: 1300, 
-        imagen: "./assets/MarcoBortolozzo.jpg",
+        imagen: "./assets/marcoBortolozzo.jpg",
         categoria: { id: "clasicas" },
     },
     {   key: "02", 
