@@ -31,17 +31,6 @@ a {
   background-color: var(---clr-main);
 
 }
-aside{
-  padding: 2rem;
-  padding-right: 0;
-  color: var(---clr-white);
-  position: sticky;
-  height: 100vh;
-  top: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
 
 .logo{
   font-weight: 400;
@@ -51,9 +40,9 @@ aside{
 
 .menu{
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: .5rem;
-
+  justify-content: center;
 }
 
 .btn-cat{
@@ -69,6 +58,7 @@ aside{
   padding: 1rem;
   font-size: .85rem;
   width: 100%;
+  
 }
 
 .btn-cat.active{
@@ -80,7 +70,7 @@ aside{
   position: relative;
 }
 
-.btn-cat.active::before {
+/* .btn-cat.active::before {
   content: '';
   position: absolute;
   width: 1rem;
@@ -90,9 +80,9 @@ aside{
   background-color: transparent;
   border-bottom-right-radius: .5rem;
   box-shadow: 0 1rem 0 var(---clr-white);
-}
+} */
 
-.btn-cat.active::after {
+/* .btn-cat.active::after {
   content: '';
   position: absolute;
   width: 1rem;
@@ -102,12 +92,8 @@ aside{
   background-color: transparent;
   border-top-right-radius: .5rem;
   box-shadow: 0 -1rem 0 var(---clr-white);
-}
+} */
 
-.cart-btn{
-  margin-top: 2rem;
-
-}
 
 .footer-text{
   color: var(---clr-main-light);
@@ -116,16 +102,25 @@ aside{
 
 main{
   background-color: var(---clr-white);
-  margin: 1rem;
-  margin-left: 0;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
   border-radius: 2rem;
-  padding: 4rem;
+  padding: 12rem;
 }
 
 .main-title{
   color: var(---clr-white);
   margin-bottom: 2rem;
 
+}
+
+.title-product{
+  color: var(---clr-white);
+}
+
+.price-product{
+  color: var(---clr-white);
 }
 
 .products-container{
@@ -177,6 +172,7 @@ main{
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  min-width: max-content;
 }
 
 .cart-products{
@@ -185,6 +181,7 @@ main{
   gap: 1rem;
 
 }
+
 
 .product-cart{
   display: flex;
@@ -200,7 +197,7 @@ main{
 
 .img-cart-product{
   width: 2rem;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
 }
 
 .cart-product small{
@@ -212,7 +209,12 @@ main{
   background-color: transparent;
   columns: var(---clr-red);
   cursor: pointer;
+  width: 1rem;
+  svg {
+    pointer-events:none;
+  }
 }
+
 
 .actions-cart{
   display: flex;
@@ -227,6 +229,11 @@ main{
   color: var(---clr-main);
   text-transform: uppercase;
   cursor: pointer;
+}
+
+.empty-cart:disabled{
+  opacity: 50%;
+  cursor: not-allowed;
 }
 
 .right-actions-cart{

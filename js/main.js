@@ -21,7 +21,7 @@ const productos = [
     },
     {   key: "04", 
         marca: "Mark Usherovich", 
-        modelo: "Romantic", 
+        modelo: "Roma", 
         precio: 3500, imagen: "./assets/markUsherovich.jpg", 
         categoria: { id: "clasicas" }, 
     },
@@ -36,6 +36,30 @@ const productos = [
         modelo: "Especial", 
         precio: 3500, imagen: "./assets/teodoroPerez.jpg", 
         categoria: { id: "clasicas" }, 
+    },
+    {   key: "07", 
+        marca: "Cordoba", 
+        modelo: "Reissue", 
+        precio: 3500, imagen: "./assets/cordobaReissue.jpg", 
+        categoria: { id: "electricas" }, 
+    },
+    {   key: "08", 
+        marca: "Paulino Bernabe", 
+        modelo: "Blanca", 
+        precio: 3500, imagen: "./assets/paulinoBernabe.jpg", 
+        categoria: { id: "electricas" },
+    },
+    {   key: "09", 
+        marca: "Manuel de la Chica", 
+        modelo: "1966", 
+        precio: 3500, imagen: "./assets/manueldelaChica.jpg", 
+        categoria: { id: "electricas" },
+    },
+    {   key: "10", 
+        marca: "José Ramírez", 
+        modelo: "1aF AM", 
+        precio: 3500, imagen: "./assets/joseRamirez1aFAM.jpg", 
+        categoria: { id: "electricas" },
     },
 ];
 
@@ -114,3 +138,45 @@ function actualizarCounter() {
 }
 
 actualizarCounter();
+
+document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('btnFetchData');
+    const div = document.getElementById('data');
+
+    btn.addEventListener('click', () => {
+        console.log('Fetch API');
+
+        const apiKey = '89c95d2ee1b149729f0234956242908';
+        const ciudad = prompt("Ingrese su ciudad")
+
+        fetch(`https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${ciudad}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+           
+            const location = data.location.name; 
+            const temperature = data.current.temp_c; 
+            const humidity = data.current.humidity; 
+
+            
+            div.innerHTML = `
+                <p>Ubicación: ${location}</p>
+                <p>Temperatura: ${temperature}°C</p>
+                <p>Humedad: ${humidity}</p>
+            `;
+        })
+        .catch(error => console.error('Error:', error));
+    });
+});
+
+
+
+
+
+
+
+
