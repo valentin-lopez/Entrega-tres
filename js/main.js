@@ -130,6 +130,10 @@ function agregarAlCarrito(e) {
     actualizarCounter();
 
     localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
+    Toastify({
+        text: "Producto agregado",
+        className: "info",
+      }).showToast();
 }
 
 function actualizarCounter() {
@@ -142,12 +146,13 @@ actualizarCounter();
 document.addEventListener('DOMContentLoaded', () => {
     const btn = document.getElementById('btnFetchData');
     const div = document.getElementById('data');
+    const cityInput = document.getElementById('cityInput');
 
     btn.addEventListener('click', () => {
         console.log('Fetch API');
 
         const apiKey = '89c95d2ee1b149729f0234956242908';
-        const ciudad = prompt("Ingrese su ciudad")
+        const ciudad = cityInput.value; // Obtener valor del input
 
         fetch(`https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${ciudad}`, {
             method: 'GET',
@@ -157,21 +162,39 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .then(response => response.json())
         .then(data => {
-           
             const location = data.location.name; 
             const temperature = data.current.temp_c; 
             const humidity = data.current.humidity; 
 
-            
+            let humidityMessage;
+            if (humidity <= 25) {
+                humidityMessage = 'Una exposición prolongada a una baja humedad puede agrietar la guitarra. El diapasón se reseca lo suficiente para que los trastes queden desnivelados.';
+            } else if (humidity > 25 && humidity <= 30) {
+                humidityMessage = 'Las guitarras pueden agrietarse, pero incluso las que no lo hagan han perdido una cantidad considerable de humedad y las tapas pueden hundirse. A menudo será necesario ajustar el puente para que la guitarra se pueda tocar.';
+            } else if (humidity > 30 && humidity <= 35) {
+                humidityMessage = 'Las tapas pueden comenzar a encogerse; la superficie de la caja de resonancia puede tender a ondularse o resecarse. Los extremos afilados de los trastes serán más evidentes.';
+            } else if (humidity > 35 && humidity <= 40) {
+                humidityMessage = 'Las guitarras pueden empezar a mostrar los extremos de los trastes afilados. La zona del diapasón que se extiende sobre el cuerpo puede empezar a desarrollar una pequeña grieta desde el traste 12 o 14 hacia la boca.';
+            } else if (humidity > 40 && humidity <= 50) {
+                humidityMessage = 'Toda sustancia orgánica y porosa trata de adaptarse al aire que la rodea, tanto en temperatura como en humedad. La madera también se adapta a las condiciones del entorno y este es el rango idóneo para la madera.';
+            } else {
+                humidityMessage = 'Los altos niveles de humedad pueden ser perjudiciales. Los típicos síntomas son el deslustre de los trastes y las cuerdas. Comienza la corrosión del níquel, el cromo o el material dorado de los clavijeros, así como el hinchamiento de la tapa y otros componentes de madera. Puede derivar a una acción elevada y no deseada y a desajustar el puente.';
+            }
+
+
             div.innerHTML = `
+               <div class="apiResponseData">
                 <p>Ubicación: ${location}</p>
-                <p>Temperatura: ${temperature}°C</p>
-                <p>Humedad: ${humidity}</p>
+                <p class="temperaturaResponse">Temperatura: ${temperature}°C</p>
+                <p class="humedadResponse">${humidity}%</p>
+               </div>
+                <p>${humidityMessage}</p>
             `;
         })
         .catch(error => console.error('Error:', error));
     });
 });
+
 
 
 

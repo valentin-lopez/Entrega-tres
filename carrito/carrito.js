@@ -13,7 +13,6 @@ function calcularTotal() {
 }
 
 function actualizarCarrito() {
-  console.log(productosEnCarrito.length)
   
   if (productosEnCarrito.length >= 0) {
     
@@ -84,7 +83,10 @@ contenedorCarritoProductos.addEventListener("click", (e) => {
   if (e.target.classList.contains("delete-cart-product")) {
     const key = e.target.id;
     const productosActualizados = productosEnCarrito.filter(producto => producto.key !== key);
-
+    Toastify({
+      text: "Producto eliminado",
+      className: "info",
+    }).showToast();
     localStorage.setItem("productos-en-carrito", JSON.stringify(productosActualizados));
     productosEnCarrito.length = 0;
     productosEnCarrito.push(...productosActualizados);

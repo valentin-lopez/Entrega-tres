@@ -1,9 +1,13 @@
 :root {
-  ---clr-main: #025159;
-  ---clr-main-light: #3F858C;
-  ---clr-white: #C4EEF2;
-  ---clr-gray: #7AB8BF;
-  ---clr-red: #A67458;
+  ---clr-main: #2A2D34;     /* Gris Carbón */
+  ---clr-main-light: #3F4E4F; /* Verde Gris Oscuro */
+  ---clr-white: #E4E4E6;    /* Blanco Grisáceo */
+  ---clr-gray: #A9A9A9;     /* Gris Plata */
+  ---clr-accent: #68829E;   /* Azul Brumoso */
+}
+
+body, main, .wrapper {
+  height: 100%;
 }
 
 * {
@@ -26,16 +30,45 @@ a {
 }
 
 .wrapper {
-  display: grid;
-  grid-template-columns: 1fr 4fr;
   background-color: var(---clr-main);
+  height: 100%;
 
 }
 
 .logo{
+  display: flex;
+  justify-content: center;
   font-weight: 400;
   font-size: 1.3rem;
   color: var(---clr-white);
+}
+
+.logo-gota{
+  background-color: var(---clr-white);
+  border-radius: 1rem;
+}
+
+.ciudad-data{
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  background-color: var(---clr-main);
+  width: 25rem;
+  height: 25rem;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 1rem;
+  opacity: 90%;
+}
+
+.text{
+  color: var(---clr-white);
+}
+
+.ciudad-text{
+  display: flex;
+  align-items: center;
+
 }
 
 .menu{
@@ -43,6 +76,8 @@ a {
   flex-direction: row;
   gap: .5rem;
   justify-content: center;
+  padding-bottom: 3rem;
+
 }
 
 .btn-cat{
@@ -65,8 +100,7 @@ a {
   background-color: var(---clr-white);
   color: var(---clr-main);
   width: 100%;
-  border-top-left-radius: 1rem;
-  border-bottom-left-radius: 1rem;
+  border-radius: 1rem;
   position: relative;
 }
 
@@ -103,10 +137,10 @@ a {
 main{
   background-color: var(---clr-white);
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   margin: 0 auto;
   border-radius: 2rem;
-  padding: 12rem;
+  padding: 4rem 12rem;
 }
 
 .main-title{
@@ -127,6 +161,7 @@ main{
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
+  margin-top: 1rem;
 }
 
 .img-product{
@@ -261,4 +296,86 @@ main{
   color: var(---clr-white);
   text-transform: uppercase;
   cursor: pointer;
+}
+
+.contador{
+  height:155px;
+  width: 320px;
+transform: rotate(180deg);
+  margin: 200px 100px;
+  position: relative;
+
+}
+
+.consultar-button{
+  width: fit-content;
+  padding: 0.5rem;
+  background-color: var(---clr-main);
+  color: var(---clr-white);
+
+}
+
+.home-container{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.consultaContainer{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 1rem;
+  height: 25rem;
+  background-color: var(---clr-main);
+  margin-top: 2rem;
+  color: var(---clr-white);
+  border-radius: 1rem;
+
+}
+
+.buscadorContainer{
+  display: flex;
+  align-items: center;
+  width: 60%;
+  gap: 1.5rem;
+  input{
+    /* estilo del input */
+  }
+  button{
+    width: fit-content;
+    border: none;
+    background-color: var(---clr-white);
+    color: var(---clr-main);
+    padding: 1rem;
+    border-radius: 0.5rem;
+
+
+  };
+}
+
+.informationContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-start;
+
+}
+
+.apiResponseData{
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  min-width: 15rem;
+  font-size: 1rem;
+
+}
+
+.humedadResponse{
+  font-size: 6rem;
+}
+.infoTemperature {
+  font-size: 3rem;
 }
